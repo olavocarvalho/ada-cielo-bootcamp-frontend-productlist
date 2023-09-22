@@ -2,7 +2,7 @@
 
 import { Dialog, RadioGroup, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { StarIcon } from '@heroicons/react/20/solid'
+import { StarIcon, ArrowLeftCircleIcon, ArrowRightCircleIcon } from '@heroicons/react/20/solid'
 import { Fragment, useState } from 'react'
 
 const product = {
@@ -11,6 +11,7 @@ const product = {
   rating: 3.9,
   reviewCount: 117,
   href: '#',
+  description: 'Sooo Long Product Name Like This You Never Saw Before',
   imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-quick-preview-02-detail.jpg',
   imageAlt: 'Two each of gray, white, and black shirts arranged on table.',
   colors: [
@@ -19,7 +20,6 @@ const product = {
     { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
   ]
 }
-
 
 const Modal = () => {
   const [open, setOpen] = useState(true)
@@ -52,6 +52,9 @@ const Modal = () => {
             >
               <Dialog.Panel className="flex w-full transform text-left text-base transition md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl">
                 <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+                  <div className="flex bg-black">
+                    <ArrowLeftCircleIcon className="h-6 w-6" />
+                  </div>
                   <button
                     type="button"
                     className="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8"
@@ -98,20 +101,47 @@ const Modal = () => {
 
                       <section aria-labelledby="options-heading" className="mt-10">
                         <h3 id="options-heading" className="sr-only">
-                          Product options
+                          Product descripton
                         </h3>
 
-                        <form>
-                        
-                          <button
-                            type="submit"
-                            className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                          >
-                            Add to bag
-                          </button>
-                        </form>
+                        <div className="mt-6 items-center">
+                          <h4 className="sr-only">buttons</h4>
+                          <div className="flex items-center justify-between">
+                            <p className="text-2xl text-gray-900">{product.description}</p>
+                          </div>
+                        </div>
+                      </section>
+
+                      <section aria-labelledby="options-heading" className="mt-10">
+                        <h3 id="options-heading" className="sr-only">
+                          Product buttons
+                        </h3>
+
+                        <div className="mt-6">
+                          <h4 className="sr-only">buttons</h4>
+                          <div className="flex items-center justify-between">
+                            <button
+                              type="submit"
+                              className="mt-6 flex w-0 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            >
+                              -
+                            </button>
+                            <div className="mt-6 items-center justify-center">
+                              <p className="text-2xl text-gray-900">10</p>
+                            </div>
+                            <button
+                              type="submit"
+                              className="mt-6 flex w-0 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
                       </section>
                     </div>
+                  </div>
+                  <div className="flex bg-black">
+                    <ArrowRightCircleIcon className="h-6 w-6" />
                   </div>
                 </div>
               </Dialog.Panel>
