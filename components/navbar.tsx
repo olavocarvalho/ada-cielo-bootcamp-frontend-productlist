@@ -1,21 +1,21 @@
 "use client";
 
 import React, { useContext } from "react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
-import { cn } from "@/lib/utils";
-import { SidebarContext } from "@/context/sidebar-context";
 import { ThemeToggle } from "./theme-toggle";
+import { SidebarToggle } from "./sidebar-toggle";
+import Cart from "./cart";
 
 export function Navbar() {
-  const { open, setOpen } = useContext(SidebarContext);
   return (
-    <nav className="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-300 w-full px-4 h-16 items-center justify-between">
+    <nav className="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-300 px-4 h-16 items-center flex w-full justify-between fixed z-10">
       <div className="flex-grow">
-        <ThemeToggle />
+        <h1 className="text-xl">ADA & Cielo Bootcamp</h1>
       </div>
-      <button className="md:hidden" onClick={() => setOpen(!open)}>
-        <Bars3Icon className="h-6 w-6" />
-      </button>
+      <div className="flex flex-row gap-2">
+        <Cart quantity={0} />
+        <ThemeToggle />
+        <SidebarToggle />
+      </div>
     </nav>
   );
 }
